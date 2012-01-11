@@ -9,11 +9,11 @@ package
 	public class Spring extends FlxSprite
 	{
 		//the graphic for the spring
-		[Embed(source = "data/gfx/interactive.png")] public var interactivePNG:Class;
+		[Embed(source = "../data/gfx/interactive.png")] public var interactivePNG:Class;
 		
-		public function Spring(X:int, Y:int) 
+		public function Spring() 
 		{
-			super(X * 16, Y * 16);
+			super(x * 16, y * 16);
 			
 			//make the spring collidable and immovable (so it doesn't fly away when you hit it)
 			solid = true;

@@ -8,16 +8,22 @@ package
 	 */
 	public class Goal extends FlxSprite
 	{		
-		[Embed(source = "data/gfx/goal.png")] public var goalPNG:Class;
+		[Embed(source = "../data/gfx/goal.png")] public var goalPNG:Class;
 		
-		public function Goal(X:int, Y:int) 
+		public function Goal() 
 		{
-			super(X * 16, Y * 16);
+			super(x * 16, y * 16);
 			
 			solid = true;
+			immovable = true;
 			
-			loadGraphic(goalPNG, false, false, 32, 48, false);
-			
+			loadGraphic(goalPNG, true, false, 16, 16, false);
+			addAnimation("waves", [0, 1, 2], 12, true);
+		}
+		
+		override public function update():void
+		{
+			play("waves");
 		}
 		
 	}

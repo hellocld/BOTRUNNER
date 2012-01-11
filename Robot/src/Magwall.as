@@ -6,15 +6,13 @@ package
 	 * ...
 	 * @author cld
 	 */
-	public class Spike extends FlxSprite
+	public class Magwall extends FlxSprite
 	{
 		[Embed(source = "../data/gfx/interactive.png")] public var interactivePNG:Class;
 		
-		public function Spike() 
+		public function Magwall() 
 		{
 			super(x * 16, y * 16);
-			
-			//make the spike collidable and immovable (so it doesn't fly off when you hit it)
 			solid = true;
 			immovable = true;
 			
@@ -25,6 +23,9 @@ package
 		{
 			addAnimation("idle", [angle]);
 			play("idle");
+			
+			if (angle == 9) touching = LEFT;
+			if (angle == 11) touching = RIGHT;
 		}
 		
 	}
