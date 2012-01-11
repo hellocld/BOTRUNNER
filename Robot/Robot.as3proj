@@ -16,7 +16,8 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="..\..\..\My Dropbox\ActionScript\flixel" />
+    <class path="..\..\Tools\flixel" />
+    <class path="Stages" />
   </classpaths>
   <!-- Build options -->
   <build>
