@@ -16,11 +16,9 @@ package
 		//the CSV classes that get assigned data from StageData.as
 		public var floorCSV:Class;
 		public var interactiveCSV:Class;
-		public var foregroundCSV:Class;
 		
-		//the Tilemaps for the floor and foreground
+		//the Tilemaps for the floor
 		public var floorMap:FlxTilemap;
-		public var foregroundMap:FlxTilemap;
 		
 		//the Tilemap used to generate the interactive elements
 		public var interactiveMap:FlxTilemap;
@@ -30,6 +28,7 @@ package
 		public var spikes:FlxGroup;
 		public var magwalls:FlxGroup;
 		public var stageGoal:FlxGroup;
+		public var crumblers:FlxGroup;
 		
 		//the player start position
 		public var playerStartX:int;
@@ -46,9 +45,7 @@ package
 		{
 			data = new StageData();
 			setData();
-			//destroyStage();
 			createFloorMap();
-			createForegroundMap();
 			createInteractiveElements();
 			setDimensions();
 			exists = true;
@@ -58,8 +55,7 @@ package
 		public function setData():void
 		{
 			floorCSV = data.floor1;
-			interactiveCSV = data.interactive1;
-			foregroundCSV = data.foreground1;
+			interactiveCSV = data.interact1;
 			name = "Base Stage";
 		}
 		
@@ -69,26 +65,20 @@ package
 			floorMap = recycle(FlxTilemap) as FlxTilemap;
 			floorMap.loadMap(new floorCSV, data.tilesPNG, 16, 16, 0, 0, 1, 8);
 		}
-		
-		//this just loads the foregroundMap from whatever you set foregroundCSV to
-		public function createForegroundMap():void
-		{
-			foregroundMap = recycle(FlxTilemap) as FlxTilemap;
-			foregroundMap.loadMap(new foregroundCSV, data.tilesPNG, 16, 16, 0, 0, 1, 8);
-		}
-		
+
 		//this runs a for loop that checks a map based on interactiveCSV
 		//and creates an interactive element in it's respective FlxGroup based on the CSV data
 		public function createInteractiveElements():void
 		{
 			interactiveMap = recycle(FlxTilemap) as FlxTilemap;
-			interactiveMap.loadMap(new interactiveCSV, data.interactivePNG, 16, 16);
+			interactiveMap.loadMap(new interactiveCSV, data.interactPNG, 16, 16);
 			
 			//initialize the interactive element FlxGroups
 			springs = recycle(FlxGroup) as FlxGroup;
 			spikes = recycle(FlxGroup) as FlxGroup;
 			magwalls = recycle(FlxGroup) as FlxGroup;
 			stageGoal = recycle(FlxGroup) as FlxGroup;
+			crumblers = recycle(FlxGroup) as FlxGroup;
 			
 			//scan the y axis
 			for (var ty:int = 0; ty < interactiveMap.heightInTiles; ty++)
@@ -113,7 +103,7 @@ package
 					}
 					
 					//check for MagWalls and add them to the magwall FlxGroup
-					if (interactiveMap.getTile(tx, ty) > 7 && interactiveMap.getTile(tx, ty) <12)
+					if (interactiveMap.getTile(tx, ty) > 7 && interactiveMap.getTile(tx, ty) <21)
 					{
 						var tempMagwall:Magwall = recycle(Magwall) as Magwall;
 						tempMagwall.reset(tx * 16, ty * 16);
@@ -122,7 +112,7 @@ package
 					}
 					
 					//check for spikes and add them to the spike FlxGroup
-					if (interactiveMap.getTile(tx, ty) > 11 && interactiveMap.getTile(tx, ty) <16)
+					if (interactiveMap.getTile(tx, ty) > 23 && interactiveMap.getTile(tx, ty) <28)
 					{
 						var tempSpike:Spike = recycle(Spike) as Spike;
 						tempSpike.reset(tx * 16, ty * 16);
@@ -131,11 +121,19 @@ package
 					}
 					
 					//check for goal tiles and add them to the stageGoal FlxGroup
-					if (interactiveMap.getTile(tx, ty) == 20)
+					if (interactiveMap.getTile(tx, ty) == 36)
 					{
 						var tempGoal:Goal = recycle(Goal) as Goal;
 						tempGoal.reset(tx * 16, ty * 16);
 						stageGoal.add(tempGoal);
+					}
+					
+					//check for crumblers and add them to the crumblers FlxGroup
+					if (interactiveMap.getTile(tx, ty) == 28)
+					{
+						var tempCrumbler:Crumbler = recycle(Crumbler) as Crumbler;
+						tempCrumbler.reset(tx * 16, ty * 16);
+						crumblers.add(tempCrumbler);
 					}
 				}
 			}
@@ -145,33 +143,6 @@ package
 		{
 			width = floorMap.width;
 			height = floorMap.height;
-		}
-		
-		//clean up memory by destroying all FlxTilemaps and FlxGroups
-		public function destroyStage():void
-		{
-			if (floorMap != null) 
-				floorMap.destroy();
-			
-			if (foregroundMap != null) 
-				foregroundMap.destroy();
-			
-			if (interactiveMap != null) 
-				interactiveMap.destroy();
-			
-			if (springs != null) 
-				springs.destroy();
-				
-			if (spikes != null) 
-				spikes.destroy();
-				
-			if (magwalls != null) 
-				magwalls.destroy();
-			
-			if (stageGoal != null) 
-				stageGoal.destroy();
-			
-			exists = false;
 		}
 	}
 }

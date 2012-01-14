@@ -515,9 +515,18 @@
     <colour>0x33a2f1</colour>
     <colour>0xb2dcee</colour>
   </colourGrid>
-  <exporter name="C:\Program Files\DAME\lua\Exporters\csvTilemap.lua" spritepos="Top Left" rotatedSpritePos="false">
-    <setting name="FileExt">csv</setting>
+  <exporter name="C:\Program Files\DAME\lua\Exporters\flixelSimple.lua" spritepos="Top Left" rotatedSpritePos="false">
+    <setting name="ExportOnlyCSV">false</setting>
+    <setting name="Imports"/>
+    <setting name="TileMapClass">FlxTilemap</setting>
+    <setting name="FlixelPackage">org.flixel</setting>
+    <setting name="GamePackage">com</setting>
+    <setting name="MainLayer"/>
+    <setting name="LevelName"/>
+    <setting name="BaseClass">BaseLevel</setting>
+    <setting name="FlixelVersion">2.5</setting>
     <setting name="CSVDir">C:\Users\Chris\Documents\Game Dev\Robot\Robot\data\maps</setting>
+    <setting name="AS3Dir">C:\Users\Chris\Desktop</setting>
   </exporter>
   <guides>
     <snap>false</snap>

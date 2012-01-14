@@ -11,8 +11,7 @@ package
 		override public function setData():void 
 		{			
 			floorCSV = data.floor5;
-			foregroundCSV = data.foreground5;
-			interactiveCSV = data.interactive5;
+			interactiveCSV = data.interact5;
 			name = "Stage 5";
 		}
 		

@@ -14,7 +14,6 @@ package
 		public var s3:Class = Stage3;
 		public var s4:Class = Stage4;
 		public var s5:Class = Stage5;
-		public var s6:Class = Stage6;
 		
 		//make an array out of the Class references of the stages
 		public static var stages:Array;
@@ -41,7 +40,7 @@ package
 		
 		override public function create():void
 		{
-			stages = [s4];
+			stages = [s1, s2, s3, s4, s5];
 			FlxG.bgColor = 0xff000000;
 			makeStage();
 			
@@ -59,13 +58,13 @@ package
 			super.update();
 			
 			FlxG.collide(player, stage.floorMap);
-			FlxG.collide(player, stage.magwalls);
-			FlxG.collide(player.magwallBox, stage.magwalls);
 			
 			if (player.stageActive)
 			{
 				FlxG.collide(player, stage.springs, springHit);
 				FlxG.collide(player, stage.spikes, spikeHit);
+				FlxG.collide(player, stage.crumblers, crumblerHit);
+				FlxG.collide(player, stage.magwalls, magwallHit);
 				FlxG.collide(player, stage.stageGoal, goalReached);
 			}
 			
@@ -82,8 +81,6 @@ package
 			
 			FlxG.watch(player, "x");
 			FlxG.watch(player, "y");
-			FlxG.watch(player.magwallBox, "x");
-			FlxG.watch(player.magwallBox, "y");
 			FlxG.watch(player, "onWall");
 		}
 		
@@ -105,6 +102,15 @@ package
 			}
 		}
 		
+		public function crumblerHit(p:Player, c:Crumbler):void
+		{
+			c.crumble();
+		}
+		
+		public function magwallHit(p:Player, m:Magwall):void
+		{
+			p.magwallContact();
+		}
 		public function goalReached(p:Player, g:Goal):void
 		{
 			p.stageComplete();
@@ -117,26 +123,23 @@ package
 		public function nextStage():void
 		{
 			FlxG.resetState();
-			if (stageCount > stages.length)
+			stageCount++;
+			if (stageCount > (stages.length - 1))
 			{
 				stageCount = 0;
 				FlxG.switchState(new MainMenu);
 			} else {
-				stageCount++;
+				makeStage();
 			}
-			makeStage();
 		}
 		
 		//generate the stage
 		public function makeStage():void
-		{
-			
+		{	
 			stage = new stages[stageCount];
 			player = recycle(Player) as Player;
 			player.setPosition(stage.playerStartX, stage.playerStartY);
 			player.reset(stage.playerStartX, stage.playerStartY);
-			
-			add(player.magwallBox);
 			
 			player.setBounds(new FlxRect(0, 0, stage.width, stage.height));
 			FlxG.worldBounds.make(0, 0, stage.width, stage.height);
@@ -145,9 +148,9 @@ package
 			add(stage.floorMap);
 			add(stage.spikes);
 			add(stage.magwalls);
+			add(stage.crumblers);
 			add(stage.stageGoal);
 			add(player);
-			add(stage.foregroundMap);
 		}
 		
 	}

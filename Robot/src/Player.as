@@ -13,9 +13,6 @@ package
 		protected var _runSpeed:uint;
 		protected var _playerBounds:FlxRect;
 		
-		//this is the box for wall jumps
-		public var magwallBox:FlxSprite;
-		
 		public var onWall:Boolean = false;
 		public var stageActive:Boolean;
 		
@@ -50,18 +47,13 @@ package
 			//animations for the robot
 			addAnimation("idle", [0]);
 			addAnimation("run", [1, 2, 3, 4, 5, 6, 7, 8], 12);
+			addAnimation("mag", [12]);
 			addAnimation("jumpUp", [10]);
 			addAnimation("jumpDown", [9]);
 			addAnimation("death", [11, 0], 2, false);
 			
 			//call this function whenever there's an animation running to provide information about that animation
 			addAnimationCallback(animCallback);
-			
-			//create the magwallBox
-			magwallBox = new FlxSprite(x - 2, y)
-			magwallBox.width = width + 4;
-			magwallBox.height = height;
-			magwallBox.solid = true;
 		}
 		
 		override public function update():void
@@ -100,35 +92,33 @@ package
 					play("run");
 				}
 				
-				if (isTouching(FlxObject.WALL) && magwallBox.isTouching(FlxObject.WALL)) 
+				//all this stuff only happens when onWall is true
+				if (onWall)
 				{
-					onWall = true;
-				}
-				if (onWall && !magwallBox.isTouching(FlxObject.WALL))
-				{
-					onWall = false;
-				}
-				
-				if (!FlxG.keys.any() && onWall)
-				{
-					if (isTouching(FlxObject.LEFT))
+					play("mag");
+					if (FlxG.keys.justPressed("UP"))
 					{
-						facing = FlxObject.RIGHT;
+						velocity.x = maxVelocity.x * (facing == FlxObject.LEFT ? -1 : 1);
+						velocity.y = -_jumpPower;
+						acceleration.y = 420;
+						onWall = false;
 					}
-					if (isTouching(FlxObject.RIGHT))
+					if (FlxG.keys.justPressed("DOWN"))
 					{
-						facing = FlxObject.LEFT;
+						acceleration.y = 420;
+						onWall = false;
+					}
+					if (FlxG.keys.justPressed("LEFT"))
+					{
+						acceleration.y = 420;
+						onWall = false;
+					}
+					if (FlxG.keys.justPressed("RIGHT"))
+					{
+						acceleration.y = 420;
+						onWall = false;
 					}
 				}
-				
-				/*
-				if (onWall && FlxG.keys.justPressed("UP"))
-				{
-					velocity.x = maxVelocity.x * (facing == FlxObject.LEFT ? -1 : 1);
-					velocity.y = -_jumpPower;
-					onWall = false;
-				}
-				*/
 				
 				if (x < 0) x = 0;
 				if (y < 0) y = 0;
@@ -136,14 +126,6 @@ package
 				if (y > _playerBounds.height - 32) y = _playerBounds.height - 32;			
 				
 			}
-		}
-		
-		override public function postUpdate():void
-		{
-			updateAnimation();
-			//update the wallbox position
-			magwallBox.x = x - 2;
-			magwallBox.y = y;
 		}
 		
 		public function setBounds(bounds:FlxRect):void
@@ -164,21 +146,50 @@ package
 			{
 				reset(xPos, yPos);
 				facing = RIGHT;
+				acceleration.y = 420;
 				alive = true;
 			}
-			
+			if (!stageActive)
+			{
+				frame = frameNumber;
+			}
 		}
 		
+		//called when the player touches a magwall
+		public function magwallContact():void
+		{
+			onWall = true;
+			acceleration.y = 0;
+			velocity.y = 0;
+			if (isTouching(FlxObject.LEFT))
+			{
+				facing = RIGHT
+			}
+			if (isTouching(FlxObject.RIGHT))
+			{
+				facing = LEFT;
+			}
+		}
+		
+		//called when the player touches the Goal
 		public function stageComplete():void
 		{
 			stageActive = false;
-			play("idle");
+			acceleration.x = 0;
+			acceleration.y = 0;
+			velocity.x = 0;
+			velocity.y = 0;
 			FlxG.log("Stage Complete!");
 		}
 		
+		//called when the player touches the spikes
 		public function death():void 
 		{
 			alive = false;
+			acceleration.x = 0;
+			acceleration.y = 0;
+			velocity.x = 0;
+			velocity.y = 0;
 			flicker(1);
 			play("death");	
 		}

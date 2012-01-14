@@ -9,10 +9,11 @@ package
 	public class Spring extends FlxSprite
 	{
 		//the graphic for the spring
-		[Embed(source = "../data/gfx/interactive.png")] public var interactivePNG:Class;
+		public var data:StageData;
 		
 		public function Spring() 
 		{
+			data = new StageData();
 			super(x * 16, y * 16);
 			
 			//make the spring collidable and immovable (so it doesn't fly away when you hit it)
@@ -20,9 +21,9 @@ package
 			immovable = true;
 			
 			//animaaaaaaations
-			loadGraphic(interactivePNG, true, false, 16, 16);
+			loadGraphic(data.interactPNG, true, false, 16, 16);
 			addAnimation("idle", [4]);
-			addAnimation("boing", [6, 5, 4], 15, false);
+			addAnimation("boing", [7, 6, 4, 5, 4, 5, 4], 15, false);
 			
 			play("idle");
 			
