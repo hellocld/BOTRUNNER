@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<audacityproject projname="robot-sfx_data" version="1.1.0" audacityversion="1.2.6" sel0="0.0000000000" sel1="0.0000000000" vpos="0" h="0.0000000000" zoom="498.5025617800" rate="44100.000000" >
+	<tags title="crumble" artist="" album="" track="5" year="" genre="0" comments="" id3v2="1" />
+	<wavetrack name="robot-sfx" channel="0" linked="0" offset="0.00000000" rate="44100.000000" gain="1.000000" pan="0.000000" >
+		<sequence maxsamples="262144" sampleformat="262159" numsamples="99612" >
+			<waveblock start="0" >
+				<simpleblockfile filename='b00024.au' len='99612' min='-0.439178' max='0.397980' rms='0.064772'/>
+			</waveblock>
+		</sequence>
+		<envelope numpoints='0'>
+		</envelope>
+	</wavetrack>
+	<labeltrack name="Label Track" numlabels="5">
+		<label t="0.00000000" t1="0.00000000" title="jump"/>
+		<label t="0.12821369" t1="0.12821369" title="spring"/>
+		<label t="0.88360247" t1="0.88360247" title="step"/>
+		<label t="0.96344076" t1="0.96344076" title="die"/>
+		<label t="2.09750034" t1="2.09750034" title="crumble"/>
+	</labeltrack>
+</audacityproject>

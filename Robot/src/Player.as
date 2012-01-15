@@ -7,7 +7,10 @@ package
 	 */
 	public class Player extends FlxSprite
 	{
-		[Embed(source = "../data/gfx/robot.png")] protected var robotPNG:Class;
+		[Embed(source = "../data/gfx/robot.png")] public var robotPNG:Class;
+		[Embed(source="../data/sfx/step.mp3")] public var stepSFX:Class;
+		[Embed(source="../data/sfx/die.mp3")] public var dieSFX:Class;
+		[Embed(source="../data/sfx/jump.mp3")] private var jumpSFX:Class;
 		
 		protected var _jumpPower:int;
 		protected var _runSpeed:uint;
@@ -15,6 +18,10 @@ package
 		
 		public var onWall:Boolean = false;
 		public var stageActive:Boolean;
+		
+		public var stepSND:FlxSound = new FlxSound();
+		public var dieSND:FlxSound = new FlxSound();
+		public var jumpSND:FlxSound = new FlxSound();
 		
 		public var xPos:int = 0;
 		public var yPos:int = 0;
@@ -52,12 +59,18 @@ package
 			addAnimation("jumpDown", [9]);
 			addAnimation("death", [11, 0], 2, false);
 			
+			//create the sound objects
+			stepSND.loadEmbedded(stepSFX, false, false);
+			jumpSND.loadEmbedded(jumpSFX, false, false);
+			dieSND.loadEmbedded(dieSFX, false, false);
+			
 			//call this function whenever there's an animation running to provide information about that animation
 			addAnimationCallback(animCallback);
 		}
 		
 		override public function update():void
 		{
+			super.update();
 			
 			if(alive && stageActive){
 				acceleration.x = 0;
@@ -76,6 +89,7 @@ package
 				if (FlxG.keys.justPressed("UP") && isTouching(FlxObject.FLOOR))
 				{
 					velocity.y = -_jumpPower;
+					jumpSND.play();
 				}
 			
 				if (velocity.y != 0)
@@ -102,6 +116,7 @@ package
 						velocity.y = -_jumpPower;
 						acceleration.y = 420;
 						onWall = false;
+						jumpSND.play();
 					}
 					if (FlxG.keys.justPressed("DOWN"))
 					{
@@ -123,9 +138,10 @@ package
 				if (x < 0) x = 0;
 				if (y < 0) y = 0;
 				if (x > _playerBounds.width - 16) x = _playerBounds.width - 16;
-				if (y > _playerBounds.height - 32) y = _playerBounds.height - 32;			
-				
+				if (y > _playerBounds.height - 32) y = _playerBounds.height - 32;
 			}
+			
+			
 		}
 		
 		public function setBounds(bounds:FlxRect):void
@@ -152,6 +168,14 @@ package
 			if (!stageActive)
 			{
 				frame = frameNumber;
+			}
+			
+			if (animationName == "run")
+			{
+				if (frameNumber == 3 || frameNumber == 7)
+				{
+					stepSND.play();
+				}
 			}
 		}
 		
@@ -186,6 +210,7 @@ package
 		public function death():void 
 		{
 			alive = false;
+			dieSND.play();
 			acceleration.x = 0;
 			acceleration.y = 0;
 			velocity.x = 0;

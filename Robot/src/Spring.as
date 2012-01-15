@@ -10,6 +10,7 @@ package
 	{
 		//the graphic for the spring
 		public var data:StageData;
+		public var boingSND:FlxSound;
 		
 		public function Spring() 
 		{
@@ -27,6 +28,9 @@ package
 			
 			play("idle");
 			
+			boingSND = new FlxSound();
+			boingSND.loadEmbedded(data.springSFX, false, false);
+			
 		}
 		
 		override public function update():void
@@ -38,6 +42,7 @@ package
 		//when the player collides with a spring, this gets called
 		public function boing():void {
 			play("boing");
+			boingSND.play();
 		}
 		
 	}

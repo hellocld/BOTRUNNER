@@ -5,14 +5,14 @@ package
 	 * ...
 	 * @author cld
 	 */
-	public class Stage6 extends BaseStage
+	public class Stage7 extends BaseStage
 	{
 		
 		override public function setData():void 
 		{			
-			floorCSV = data.floor6;
-			interactiveCSV = data.interact6;
-			name = "Stage 6";
+			floorCSV = data.floor7;
+			interactiveCSV = data.interact7;
+			name = "Stage 7";
 		}
 		
 	}

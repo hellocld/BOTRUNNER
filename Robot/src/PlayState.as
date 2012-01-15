@@ -8,12 +8,15 @@ package
 	 */
 	public class PlayState extends FlxState
 	{
+		
 		//generate all the Class references to each stage
 		public var s1:Class = Stage1;
 		public var s2:Class = Stage2;
 		public var s3:Class = Stage3;
 		public var s4:Class = Stage4;
 		public var s5:Class = Stage5;
+		public var s6:Class = Stage6;
+		public var s7:Class = Stage7;
 		
 		//make an array out of the Class references of the stages
 		public static var stages:Array;
@@ -40,7 +43,7 @@ package
 		
 		override public function create():void
 		{
-			stages = [s1, s2, s3, s4, s5];
+			stages = [s1, s2, s3, s4, s5, s6, s7];
 			FlxG.bgColor = 0xff000000;
 			makeStage();
 			

@@ -11,6 +11,9 @@ package
 		//the graphic for the spring
 		public var data:StageData;
 		
+		//the crumble FlxSound
+		public var crumbleSND:FlxSound;
+		
 		//has the crumbler, er, crumbled?
 		public var crumbled:Boolean = false;
 		
@@ -36,6 +39,9 @@ package
 			addAnimation("uncrumble", [0, 31, 30, 29, 28], 15, false);
 			play("uncrumble");
 			
+			//audio
+			crumbleSND = new FlxSound();
+			crumbleSND.loadEmbedded(data.crumbleSFX);
 		}
 		
 		override public function update():void
@@ -52,6 +58,7 @@ package
 					if (solid) 
 					{
 						play("crumble");
+						crumbleSND.play();
 					}
 					solid = false;
 				}
