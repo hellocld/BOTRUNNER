@@ -1,6 +1,7 @@
 package  
 {
-	import flash.display.StageScaleMode;
+	import flash.geom.Rectangle;
+	import org.flixel.plugin.photonstorm.*
 	import org.flixel.*
 	/**
 	 * ...
@@ -45,6 +46,7 @@ package
 		{
 			stages = [s1, s2, s3, s4, s5, s6, s7];
 			FlxG.bgColor = 0xff000000;
+			
 			makeStage();
 			
 			FlxG.log(stage.name);
@@ -139,6 +141,7 @@ package
 		//generate the stage
 		public function makeStage():void
 		{	
+			
 			stage = new stages[stageCount];
 			player = recycle(Player) as Player;
 			player.setPosition(stage.playerStartX, stage.playerStartY);
@@ -146,7 +149,7 @@ package
 			
 			player.setBounds(new FlxRect(0, 0, stage.width, stage.height));
 			FlxG.worldBounds.make(0, 0, stage.width, stage.height);
-			
+
 			add(stage.springs);
 			add(stage.floorMap);
 			add(stage.spikes);

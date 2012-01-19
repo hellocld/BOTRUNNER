@@ -1,6 +1,5 @@
 package  
 {
-	import org.flixel.*
 	
 	/**
 	 * ...
