@@ -9,12 +9,15 @@ package
 	public class Spring extends FlxSprite
 	{
 		//the graphic for the spring
-		public var data:StageData;
+		public var gfxdata:GfxData;
+		public var snddata:SndData;
 		public var boingSND:FlxSound;
 		
 		public function Spring() 
 		{
-			data = new StageData();
+			gfxdata = new GfxData();
+			snddata = new SndData();
+			
 			super(x * 16, y * 16);
 			
 			//make the spring collidable and immovable (so it doesn't fly away when you hit it)
@@ -22,14 +25,14 @@ package
 			immovable = true;
 			
 			//animaaaaaaations
-			loadGraphic(data.interactPNG, true, false, 16, 16);
+			loadGraphic(gfxdata.interactPNG, true, false, 16, 16);
 			addAnimation("idle", [4]);
 			addAnimation("boing", [7, 6, 4, 5, 4, 5, 4], 15, false);
 			
 			play("idle");
 			
 			boingSND = new FlxSound();
-			boingSND.loadEmbedded(data.springSFX, false, false);
+			boingSND.loadEmbedded(snddata.springSFX, false, false);
 			
 		}
 		

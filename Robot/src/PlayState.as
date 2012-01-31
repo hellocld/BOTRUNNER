@@ -23,10 +23,10 @@ package
 		public static var stages:Array;
 		
 		//make one stage object that the stages can be loaded into
-		private var stage:BaseStage;
+		public var stage:BaseStage;
 		
 		//make the player object
-		private var player:Player;
+		public var player:Player;
 		
 		//make a text box (DOESN'T WORK)
 		private var winText:TextFrame;
@@ -44,7 +44,7 @@ package
 		
 		override public function create():void
 		{
-			stages = [s1, s2, s3, s4, s5, s6, s7];
+			stages = [s2];
 			FlxG.bgColor = 0xff000000;
 			
 			makeStage();
@@ -144,12 +144,13 @@ package
 			
 			stage = new stages[stageCount];
 			player = recycle(Player) as Player;
-			player.setPosition(stage.playerStartX, stage.playerStartY);
 			player.reset(stage.playerStartX, stage.playerStartY);
+			player.setPosition(stage.playerStartX, stage.playerStartY);
 			
 			player.setBounds(new FlxRect(0, 0, stage.width, stage.height));
 			FlxG.worldBounds.make(0, 0, stage.width, stage.height);
-
+			
+			add(stage.backgroundMap);
 			add(stage.springs);
 			add(stage.floorMap);
 			add(stage.spikes);
@@ -157,6 +158,7 @@ package
 			add(stage.crumblers);
 			add(stage.stageGoal);
 			add(player);
+			
 		}
 		
 	}

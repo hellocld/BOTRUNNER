@@ -7,10 +7,15 @@ package
 	 */
 	public class Player extends FlxSprite
 	{
+		/*
 		[Embed(source = "../data/gfx/robot.png")] public var robotPNG:Class;
 		[Embed(source="../data/sfx/step.mp3")] public var stepSFX:Class;
 		[Embed(source="../data/sfx/die.mp3")] public var dieSFX:Class;
 		[Embed(source="../data/sfx/jump.mp3")] private var jumpSFX:Class;
+		*/
+		
+		public var gfxdata:GfxData;
+		public var snddata:SndData;
 		
 		protected var _jumpPower:int;
 		protected var _runSpeed:uint;
@@ -29,9 +34,11 @@ package
 		public function Player() 
 		{
 			super(xPos, yPos);
+			gfxdata = new GfxData();
+			snddata = new SndData();
 			
 			//load the sprite sheet for the robot
-			loadGraphic(robotPNG, true, true, 16, 32);
+			loadGraphic(gfxdata.robotPNG, true, true, 16, 32);
 			
 			//set all the control and physics variables
 			_runSpeed = 120;
@@ -60,9 +67,9 @@ package
 			addAnimation("death", [11, 0], 2, false);
 			
 			//create the sound objects
-			stepSND.loadEmbedded(stepSFX, false, false);
-			jumpSND.loadEmbedded(jumpSFX, false, false);
-			dieSND.loadEmbedded(dieSFX, false, false);
+			stepSND.loadEmbedded(snddata.stepSFX, false, false);
+			jumpSND.loadEmbedded(snddata.jumpSFX, false, false);
+			dieSND.loadEmbedded(snddata.dieSFX, false, false);
 			
 			//call this function whenever there's an animation running to provide information about that animation
 			addAnimationCallback(animCallback);

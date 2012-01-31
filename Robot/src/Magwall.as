@@ -8,16 +8,16 @@ package
 	 */
 	public class Magwall extends FlxSprite
 	{
-		public var data:StageData;
+		public var gfxdata:GfxData;
 		
 		public function Magwall() 
 		{
-			data = new StageData();
+			gfxdata = new GfxData();
 			super(x * 16, y * 16);
 			solid = true;
 			immovable = true;
 			
-			loadGraphic(data.interactPNG, true, false, 16, 16);
+			loadGraphic(gfxdata.interactPNG, true, false, 16, 16);
 		}
 		
 		public function setAngle(angle:int):void

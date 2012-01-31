@@ -8,10 +8,9 @@ package
 	 */
 	public class Crumbler extends FlxSprite
 	{
-		//the graphic for the spring
-		public var data:StageData;
+		public var gfxdata:GfxData;
+		public var snddata:SndData;
 		
-		//the crumble FlxSound
 		public var crumbleSND:FlxSound;
 		
 		//has the crumbler, er, crumbled?
@@ -25,7 +24,8 @@ package
 		
 		public function Crumbler() 
 		{
-			data = new StageData();
+			gfxdata = new GfxData();
+			snddata = new SndData();
 			super(x * 16, y * 16);
 			
 			//make the crumbler collidable and immovable (so it doesn't fly away when you hit it)
@@ -33,15 +33,16 @@ package
 			immovable = true;
 			
 			//animaaaaaaations
-			loadGraphic(data.interactPNG, true, false, 16, 16);
-			addAnimation("idle", [28]);
-			addAnimation("crumble", [28, 29, 30, 31, 0], 15, false);
-			addAnimation("uncrumble", [0, 31, 30, 29, 28], 15, false);
+			loadGraphic(gfxdata.interactPNG, true, false, 16, 16);
+			addAnimation("idle", [20]);
+			addAnimation("crumbling", [20, 16], 15, true);
+			addAnimation("crumble", [16, 17, 18, 19, 0], 15, false);
+			addAnimation("uncrumble", [0, 19, 18, 17, 16], 15, false);
 			play("uncrumble");
 			
 			//audio
 			crumbleSND = new FlxSound();
-			crumbleSND.loadEmbedded(data.crumbleSFX);
+			crumbleSND.loadEmbedded(snddata.crumbleSFX);
 		}
 		
 		override public function update():void
@@ -52,6 +53,11 @@ package
 			{
 				//start the counter
 				counter += FlxG.elapsed;
+				//if about to crumble play "crumbling"
+				if (counter > 0 && counter < 0.5) 
+				{
+					play("crumbling");
+				}
 				//if the counter passes 1 second, crumble the block
 				if (counter >= 0.5 && counter < 3) 
 				{

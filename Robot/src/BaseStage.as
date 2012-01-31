@@ -12,16 +12,21 @@ package
 	{
 		//the data of all the stages
 		public var data:StageData;
+		public var gfxdata:GfxData;
 		
 		//the CSV classes that get assigned data from StageData.as
 		public var floorCSV:Class;
 		public var interactiveCSV:Class;
+		public var backgroundCSV:Class;
 		
 		//the Tilemaps for the floor
 		public var floorMap:FlxTilemap;
 		
 		//the Tilemap used to generate the interactive elements
 		public var interactiveMap:FlxTilemap;
+		
+		//the Tilemap for the background
+		public var backgroundMap:FlxTilemap;
 		
 		//the interactive elements
 		public var springs:FlxGroup;
@@ -44,9 +49,11 @@ package
 		public function BaseStage():void
 		{
 			data = new StageData();
+			gfxdata = new GfxData();
 			setData();
 			createFloorMap();
 			createInteractiveElements();
+			createBackgroundMap();
 			setDimensions();
 			exists = true;
 		}
@@ -56,6 +63,7 @@ package
 		{
 			floorCSV = data.floor1;
 			interactiveCSV = data.interact1;
+			backgroundCSV = data.background1;
 			name = "Base Stage";
 		}
 		
@@ -63,15 +71,24 @@ package
 		public function createFloorMap():void
 		{
 			floorMap = recycle(FlxTilemap) as FlxTilemap;
-			floorMap.loadMap(new floorCSV, data.tilesPNG, 16, 16, 0, 0, 1, 8);
+			floorMap.loadMap(new floorCSV, gfxdata.tilesPNG, 16, 16, 0, 0, 1, 8);
 		}
-
+		
+		//this just loads the backgroundMap from whatever you set backgroundCSV to
+		public function createBackgroundMap():void
+		{
+			backgroundMap = recycle(FlxTilemap) as FlxTilemap;
+			backgroundMap.loadMap(new backgroundCSV, gfxdata.backgroundPNG, 32, 32, 0, 0, 1, 8);
+			backgroundMap.scrollFactor.x = 0.5;
+			backgroundMap.scrollFactor.y = 0.5;
+		}
+		
 		//this runs a for loop that checks a map based on interactiveCSV
 		//and creates an interactive element in it's respective FlxGroup based on the CSV data
 		public function createInteractiveElements():void
 		{
 			interactiveMap = recycle(FlxTilemap) as FlxTilemap;
-			interactiveMap.loadMap(new interactiveCSV, data.interactPNG, 16, 16);
+			interactiveMap.loadMap(new interactiveCSV, gfxdata.interactPNG, 16, 16);
 			
 			//initialize the interactive element FlxGroups
 			springs = recycle(FlxGroup) as FlxGroup;
@@ -103,7 +120,7 @@ package
 					}
 					
 					//check for MagWalls and add them to the magwall FlxGroup
-					if (interactiveMap.getTile(tx, ty) > 7 && interactiveMap.getTile(tx, ty) <21)
+					if (interactiveMap.getTile(tx, ty) > 7 && interactiveMap.getTile(tx, ty) <12)
 					{
 						var tempMagwall:Magwall = recycle(Magwall) as Magwall;
 						tempMagwall.reset(tx * 16, ty * 16);
@@ -112,7 +129,7 @@ package
 					}
 					
 					//check for spikes and add them to the spike FlxGroup
-					if (interactiveMap.getTile(tx, ty) > 23 && interactiveMap.getTile(tx, ty) <28)
+					if (interactiveMap.getTile(tx, ty) > 11 && interactiveMap.getTile(tx, ty) <16)
 					{
 						var tempSpike:Spike = recycle(Spike) as Spike;
 						tempSpike.reset(tx * 16, ty * 16);

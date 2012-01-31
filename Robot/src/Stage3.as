@@ -12,6 +12,7 @@ package
 		{			
 			floorCSV = data.floor3;
 			interactiveCSV = data.interact3;
+			backgroundCSV = data.background3;
 			name = "Stage 3";
 		}
 		
