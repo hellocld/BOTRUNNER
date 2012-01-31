@@ -143,7 +143,7 @@ package
 					if (interactiveMap.getTile(tx, ty) == 36)
 					{
 						var tempGoal:Goal = recycle(Goal) as Goal;
-						tempGoal.reset(tx * 16, ty * 16);
+						tempGoal.reset(tx * 16, (ty * 16)+8);
 						stageGoal.add(tempGoal);
 					}
 					

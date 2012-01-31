@@ -19,6 +19,10 @@ package
 			immovable = true;
 			
 			loadGraphic(gfxdata.interactPNG, true, false, 16, 16, false);
+			
+			height = 8;
+			offset.y = 8;
+			
 			addAnimation("waves", [36, 37, 38, 39], 12, true);
 		}
 		

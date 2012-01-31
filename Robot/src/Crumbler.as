@@ -37,7 +37,7 @@ package
 			addAnimation("idle", [20]);
 			addAnimation("crumbling", [20, 16], 15, true);
 			addAnimation("crumble", [16, 17, 18, 19, 0], 15, false);
-			addAnimation("uncrumble", [0, 19, 18, 17, 16], 15, false);
+			addAnimation("uncrumble", [0, 19, 18, 17, 16, 20], 15, false);
 			play("uncrumble");
 			
 			//audio
