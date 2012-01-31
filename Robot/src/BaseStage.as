@@ -52,8 +52,8 @@ package
 			gfxdata = new GfxData();
 			setData();
 			createFloorMap();
-			createInteractiveElements();
 			createBackgroundMap();
+			createInteractiveElements();
 			setDimensions();
 			exists = true;
 		}
@@ -71,7 +71,7 @@ package
 		public function createFloorMap():void
 		{
 			floorMap = recycle(FlxTilemap) as FlxTilemap;
-			floorMap.loadMap(new floorCSV, gfxdata.tilesPNG, 16, 16, 0, 0, 1, 8);
+			floorMap.loadMap(new floorCSV, gfxdata.tilesPNG, 16, 16, 0, 0, 1, 1);
 		}
 		
 		//this just loads the backgroundMap from whatever you set backgroundCSV to

@@ -26,9 +26,6 @@ package
 		//make the player object
 		public var player:Player;
 		
-		//make a text box (DOESN'T WORK)
-		private var winText:TextFrame;
-		
 		//set the stage counter at 0
 		public static var stageCount:int = 0;
 		
@@ -42,7 +39,7 @@ package
 		
 		override public function create():void
 		{
-			stages = [s2];
+			stages = [s1, s2, s3, s4, s5, s6, s7];
 			FlxG.bgColor = 0xff000000;
 			
 			makeStage();
@@ -117,7 +114,6 @@ package
 		public function goalReached(p:Player, g:Goal):void
 		{
 			p.stageComplete();
-			add(new FlxText(8, 8, 200, "Stage Complete!", true));
 			FlxG.fade(0xff000000, 1, nextStage);
 		}
 		
@@ -141,6 +137,8 @@ package
 		{	
 			
 			stage = new stages[stageCount];
+			add(stage.backgroundMap);
+			
 			player = recycle(Player) as Player;
 			player.reset(stage.playerStartX, stage.playerStartY);
 			player.setPosition(stage.playerStartX, stage.playerStartY);
@@ -148,7 +146,7 @@ package
 			player.setBounds(new FlxRect(0, 0, stage.width, stage.height));
 			FlxG.worldBounds.make(0, 0, stage.width, stage.height);
 			
-			add(stage.backgroundMap);
+			
 			add(stage.springs);
 			add(stage.floorMap);
 			add(stage.spikes);

@@ -147,8 +147,6 @@ package
 				if (x > _playerBounds.width - 16) x = _playerBounds.width - 16;
 				if (y > _playerBounds.height - 32) y = _playerBounds.height - 32;
 			}
-			
-			
 		}
 		
 		public function setBounds(bounds:FlxRect):void
@@ -164,7 +162,6 @@ package
 		
 		public function animCallback(animationName:String, frameNumber:uint, frameIndex:uint):void
 		{
-			
 			if (animationName == "death" && frameNumber == 1)
 			{
 				reset(xPos, yPos);
@@ -226,5 +223,4 @@ package
 			play("death");	
 		}
 	}
-
 }
