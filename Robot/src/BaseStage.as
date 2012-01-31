@@ -34,6 +34,7 @@ package
 		public var magwalls:FlxGroup;
 		public var stageGoal:FlxGroup;
 		public var crumblers:FlxGroup;
+		public var blasters:FlxGroup;
 		
 		//the player start position
 		public var playerStartX:int;
@@ -96,6 +97,7 @@ package
 			magwalls = recycle(FlxGroup) as FlxGroup;
 			stageGoal = recycle(FlxGroup) as FlxGroup;
 			crumblers = recycle(FlxGroup) as FlxGroup;
+			blasters = recycle(FlxGroup) as FlxGroup;
 			
 			//scan the y axis
 			for (var ty:int = 0; ty < interactiveMap.heightInTiles; ty++)
@@ -146,11 +148,21 @@ package
 					}
 					
 					//check for crumblers and add them to the crumblers FlxGroup
-					if (interactiveMap.getTile(tx, ty) == 28)
+					if (interactiveMap.getTile(tx, ty) == 16)
 					{
 						var tempCrumbler:Crumbler = recycle(Crumbler) as Crumbler;
 						tempCrumbler.reset(tx * 16, ty * 16);
 						crumblers.add(tempCrumbler);
+					}
+					
+					//check for blasters and add them to the blasters FlxGroup
+					if (interactiveMap.getTile(tx, ty) > 63 && interactiveMap.getTile(tx, ty) < 94)
+					{
+						var tempBlaster:Blaster = recycle(Blaster) as Blaster;
+						tempBlaster.reset(tx * 16, ty * 16);
+						tempBlaster.startFrame = interactiveMap.getTile(tx, ty);
+						tempBlaster.setup();
+						blasters.add(tempBlaster);
 					}
 				}
 			}

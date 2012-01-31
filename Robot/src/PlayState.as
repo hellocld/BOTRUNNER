@@ -58,6 +58,7 @@ package
 			super.update();
 			
 			FlxG.collide(player, stage.floorMap);
+			FlxG.collide(player, stage.blasters);
 			
 			if (player.stageActive)
 			{
@@ -152,8 +153,11 @@ package
 			add(stage.spikes);
 			add(stage.magwalls);
 			add(stage.crumblers);
+			add(stage.blasters);
 			add(stage.stageGoal);
 			add(player);
+			
+			FlxG.camera.flash(0xff000000, 1, null, false);
 			
 		}
 		
