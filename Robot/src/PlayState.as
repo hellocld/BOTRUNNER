@@ -1,7 +1,5 @@
 package  
 {
-	import flash.geom.Rectangle;
-	import org.flixel.plugin.photonstorm.*
 	import org.flixel.*
 	/**
 	 * ...
