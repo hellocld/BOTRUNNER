@@ -31,6 +31,7 @@ package
 		public var xPos:int = 0;
 		public var yPos:int = 0;
 		
+		
 		public function Player() 
 		{
 			super(xPos, yPos);
@@ -80,8 +81,9 @@ package
 			super.update();
 			
 			if(alive && stageActive){
+				
 				acceleration.x = 0;
-			
+				
 				if (FlxG.keys.LEFT)
 				{
 					facing = LEFT;
@@ -98,6 +100,7 @@ package
 					velocity.y = -_jumpPower;
 					jumpSND.play();
 				}
+
 			
 				if (velocity.y != 0)
 				{

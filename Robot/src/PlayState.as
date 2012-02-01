@@ -83,6 +83,7 @@ package
 			FlxG.watch(player, "x");
 			FlxG.watch(player, "y");
 			FlxG.watch(player, "onWall");
+			FlxG.watch(player, "counter");
 		}
 		
 		

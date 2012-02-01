@@ -548,8 +548,8 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       </maplayer>
     </group>
-    <group name="Stage_6" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
-      <maplayer name="Background" xScroll="0.5" yScroll="0.5" x="0" y="0" width="16" height="20" tileset="Robot/data/gfx/bkgnd.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" selected="true">
+    <group name="Stage_6" xScroll="1" yScroll="1" visible="false" open="true" locked="false" exports="true">
+      <maplayer name="Background" xScroll="0.5" yScroll="0.5" x="0" y="0" width="16" height="20" tileset="Robot/data/gfx/bkgnd.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</row>
         <row>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</row>
         <row>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</row>
@@ -656,7 +656,7 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       </maplayer>
     </group>
-    <group name="Stage_7" xScroll="1" yScroll="1" visible="false" open="true" locked="false" exports="true">
+    <group name="Stage_7" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
       <maplayer name="Background" xScroll="0.5" yScroll="0.5" x="0" y="0" width="16" height="16" tileset="Robot/data/gfx/bkgnd.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</row>
         <row>1,1,1,1,1,1,1,8,2,1,1,1,1,1,1,1</row>
@@ -697,7 +697,7 @@
         <row>15,0,0,0,0,0,0,6,23,0,0,0,0,0,0,0,0,0,0,17</row>
         <row>21,7,7,7,7,7,7,23,13,46,7,7,7,7,7,7,7,7,7,23</row>
       </maplayer>
-      <maplayer name="Interactive" xScroll="1" yScroll="1" x="0" y="0" width="20" height="20" tileset="Robot/data/gfx/interactive.png" tileWidth="16" tileHeight="16" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Interactive" xScroll="1" yScroll="1" x="0" y="0" width="20" height="20" tileset="Robot/data/gfx/interactive.png" tileWidth="16" tileHeight="16" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" selected="true">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>

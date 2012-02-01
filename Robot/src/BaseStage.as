@@ -35,6 +35,7 @@ package
 		public var stageGoal:FlxGroup;
 		public var crumblers:FlxGroup;
 		public var blasters:FlxGroup;
+		public var bullets:FlxGroup;
 		
 		//the player start position
 		public var playerStartX:int;
@@ -98,6 +99,7 @@ package
 			stageGoal = recycle(FlxGroup) as FlxGroup;
 			crumblers = recycle(FlxGroup) as FlxGroup;
 			blasters = recycle(FlxGroup) as FlxGroup;
+			bullets = recycle(FlxGroup) as FlxGroup;
 			
 			//scan the y axis
 			for (var ty:int = 0; ty < interactiveMap.heightInTiles; ty++)
@@ -163,6 +165,10 @@ package
 						tempBlaster.startFrame = interactiveMap.getTile(tx, ty);
 						tempBlaster.setup();
 						blasters.add(tempBlaster);
+						
+						var tempBullet:Bullet = recycle(Bullet) as Bullet;
+						tempBullet.reset(tx * 16, ty * 16);
+						
 					}
 				}
 			}
