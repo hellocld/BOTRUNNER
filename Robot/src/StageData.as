@@ -35,6 +35,30 @@ package
 		[Embed(source = "../data/maps/mapCSV_Stage_7_Interactive.csv", mimeType = "application/octet-stream")] public var interact7:Class;
 		[Embed(source = "../data/maps/mapCSV_Stage_7_Background.csv", mimeType = "application/octet-stream")] public var background7:Class;
 		
+		[Embed(source = "../data/maps/mapCSV_Stage_8_Floor.csv", mimeType = "application/octet-stream")] public var floor8:Class;
+		[Embed(source = "../data/maps/mapCSV_Stage_8_Interactive.csv", mimeType = "application/octet-stream")] public var interact8:Class;
+		[Embed(source = "../data/maps/mapCSV_Stage_8_Background.csv", mimeType = "application/octet-stream")] public var background8:Class;
+		
+		[Embed(source = "../data/maps/mapCSV_Stage_9_Floor.csv", mimeType = "application/octet-stream")] public var floor9:Class;
+		[Embed(source = "../data/maps/mapCSV_Stage_9_Interactive.csv", mimeType = "application/octet-stream")] public var interact9:Class;
+		[Embed(source = "../data/maps/mapCSV_Stage_9_Background.csv", mimeType = "application/octet-stream")] public var background9:Class;
+		
+		[Embed(source = "../data/maps/mapCSV_Stage_10_Floor.csv", mimeType = "application/octet-stream")] public var floor10:Class;
+		[Embed(source = "../data/maps/mapCSV_Stage_10_Interactive.csv", mimeType = "application/octet-stream")] public var interact10:Class;
+		[Embed(source = "../data/maps/mapCSV_Stage_10_Background.csv", mimeType = "application/octet-stream")] public var background10:Class;
+		
+		[Embed(source = "../data/maps/mapCSV_Stage_11_Floor.csv", mimeType = "application/octet-stream")] public var floor11:Class;
+		[Embed(source = "../data/maps/mapCSV_Stage_11_Interactive.csv", mimeType = "application/octet-stream")] public var interact11:Class;
+		[Embed(source = "../data/maps/mapCSV_Stage_11_Background.csv", mimeType = "application/octet-stream")] public var background11:Class;
+		
+		[Embed(source = "../data/maps/mapCSV_Stage_12_Floor.csv", mimeType = "application/octet-stream")] public var floor12:Class;
+		[Embed(source = "../data/maps/mapCSV_Stage_12_Interactive.csv", mimeType = "application/octet-stream")] public var interact12:Class;
+		[Embed(source = "../data/maps/mapCSV_Stage_12_Background.csv", mimeType = "application/octet-stream")] public var background12:Class;
+		
+		[Embed(source = "../data/maps/mapCSV_Credits_Floor.csv", mimeType = "application/octet-stream")] public var floorCredits:Class;
+		[Embed(source = "../data/maps/mapCSV_Credits_Interactive.csv", mimeType = "application/octet-stream")] public var interactCredits:Class;
+		[Embed(source = "../data/maps/mapCSV_Credits_Background.csv", mimeType = "application/octet-stream")] public var backgroundCredits:Class;
+		
 	}
 
 }

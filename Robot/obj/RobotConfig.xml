@@ -16,17 +16,17 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'1/31/2012'</value>
+      <value>'2/18/2012'</value>
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>C:\Users\clangford\Documents\Dropbox\Game Dev\Robot\Robot\src</path-element>
-      <path-element>C:\Users\clangford\Documents\Dropbox\Game Dev\Tools\flixel</path-element>
-      <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
+      <path-element>C:\Users\Chris\Documents\My Dropbox\Game Dev\Robot\Robot\src</path-element>
+      <path-element>C:\Users\Chris\Documents\My Dropbox\Game Dev\Tools\flixel</path-element>
+      <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
   </compiler>
   <file-specs>
-    <path-element>C:\Users\clangford\Documents\Dropbox\Game Dev\Robot\Robot\src\Robot.as</path-element>
+    <path-element>C:\Users\Chris\Documents\My Dropbox\Game Dev\Robot\Robot\src\Robot.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

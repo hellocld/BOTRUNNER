@@ -16,6 +16,13 @@ package
 		public var s5:Class = Stage5;
 		public var s6:Class = Stage6;
 		public var s7:Class = Stage7;
+		public var s8:Class = Stage8;
+		public var s9:Class = Stage9;
+		public var s10:Class = Stage10;
+		public var s11:Class = Stage11;
+		public var s12:Class = Stage12;
+		
+		public var credits:Class = StageCredits;
 		
 		//make an array out of the Class references of the stages
 		public static var stages:Array;
@@ -39,7 +46,7 @@ package
 		
 		override public function create():void
 		{
-			stages = [s1, s2, s3, s4, s5, s6, s7];
+			stages = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, credits];
 			FlxG.bgColor = 0xff000000;
 			
 			makeStage();
@@ -58,7 +65,6 @@ package
 			super.update();
 			
 			FlxG.collide(player, stage.floorMap);
-			FlxG.collide(player, stage.blasters);
 			
 			if (player.stageActive)
 			{
@@ -83,7 +89,6 @@ package
 			FlxG.watch(player, "x");
 			FlxG.watch(player, "y");
 			FlxG.watch(player, "onWall");
-			FlxG.watch(player, "counter");
 		}
 		
 		
@@ -154,7 +159,6 @@ package
 			add(stage.spikes);
 			add(stage.magwalls);
 			add(stage.crumblers);
-			add(stage.blasters);
 			add(stage.stageGoal);
 			add(player);
 			

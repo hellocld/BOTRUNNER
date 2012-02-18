@@ -7,8 +7,8 @@ package
 	 */
 	public class MainMenu extends FlxState
 	{
-		
-		protected var _text:FlxText;
+		[Embed(source = "../data/gfx/titlescreen.png")] public var titlePNG:Class;
+		public var titleGFX:FlxSprite;
 		
 		public function MainMenu() 
 		{
@@ -18,10 +18,9 @@ package
 		override public function create():void
 		{
 			FlxG.bgColor = 0xff000000;
-			
-			_text = new FlxText(10, 10, 300, "Robot - press x to begin");
-			
-			add(_text);
+			titleGFX = new FlxSprite();
+			titleGFX.loadGraphic(titlePNG, false, false, 320, 240, false);
+			add(titleGFX);
 		}
 		
 		override public function update():void

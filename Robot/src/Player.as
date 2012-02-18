@@ -119,6 +119,8 @@ package
 				//all this stuff only happens when onWall is true
 				if (onWall)
 				{
+					width = 16;
+					offset.x = 0;
 					play("mag");
 					if (FlxG.keys.justPressed("UP"))
 					{
@@ -132,16 +134,22 @@ package
 					{
 						acceleration.y = 420;
 						onWall = false;
+						width = 14;
+						offset.x = 1;
 					}
 					if (FlxG.keys.justPressed("LEFT"))
 					{
 						acceleration.y = 420;
 						onWall = false;
+						width = 14;
+						offset.x = 1;
 					}
 					if (FlxG.keys.justPressed("RIGHT"))
 					{
 						acceleration.y = 420;
 						onWall = false;
+						width = 14;
+						offset.x = 1;
 					}
 				}
 				
