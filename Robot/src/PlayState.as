@@ -21,6 +21,8 @@ package
 		public var s10:Class = Stage10;
 		public var s11:Class = Stage11;
 		public var s12:Class = Stage12;
+		public var s13:Class = Stage13;
+		public var s14:Class = Stage14;
 		
 		public var credits:Class = StageCredits;
 		
@@ -46,7 +48,7 @@ package
 		
 		override public function create():void
 		{
-			stages = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, credits];
+			stages = [s14];
 			FlxG.bgColor = 0xff000000;
 			
 			makeStage();
