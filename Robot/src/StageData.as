@@ -63,6 +63,10 @@ package
 		[Embed(source = "../data/maps/mapCSV_Stage_14_Interactive.csv", mimeType = "application/octet-stream")] public var interact14:Class;
 		[Embed(source = "../data/maps/mapCSV_Stage_14_Background.csv", mimeType = "application/octet-stream")] public var background14:Class;
 		
+		[Embed(source = "../data/maps/mapCSV_Stage_15_Floor.csv", mimeType = "application/octet-stream")] public var floor15:Class;
+		[Embed(source = "../data/maps/mapCSV_Stage_15_Interactive.csv", mimeType = "application/octet-stream")] public var interact15:Class;
+		[Embed(source = "../data/maps/mapCSV_Stage_15_Background.csv", mimeType = "application/octet-stream")] public var background15:Class;
+		
 		[Embed(source = "../data/maps/mapCSV_Credits_Floor.csv", mimeType = "application/octet-stream")] public var floorCredits:Class;
 		[Embed(source = "../data/maps/mapCSV_Credits_Interactive.csv", mimeType = "application/octet-stream")] public var interactCredits:Class;
 		[Embed(source = "../data/maps/mapCSV_Credits_Background.csv", mimeType = "application/octet-stream")] public var backgroundCredits:Class;

@@ -14,7 +14,7 @@ package
 		public function Robot():void 
 		{
 			super(320, 240, MainMenu, 2);
-			forceDebugger = true;
+			forceDebugger = false;
 		}
 		
 	}
